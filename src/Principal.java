@@ -4,9 +4,9 @@ public class Principal {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int opcao;
+        ConversaoDeMoeda conversao = new ConversaoDeMoeda();
+
         do {
-
-
             System.out.println("\n✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧\n");
             System.out.println("Converta um valor em determinada moeda. \n");
             System.out.println("1) Dólar -> Peso argentino \n" +
@@ -18,23 +18,34 @@ public class Principal {
                     "7) Sair \n" +
                     "8) Histórico");
             System.out.println("\nEscolha uma opção válida:");
+
             opcao = scanner.nextInt();
+
+            System.out.println("Digite um valor para converter.");
+            var valorOriginal = scanner.nextDouble();
+
+            String moedaOriginal;
+            String moedaAlvo;
+            double taxaCambio;
 
             switch (opcao) {
                 case 1:
-                    double dolarParaPeso = 60.0; // Taxa de câmbio
-
-                    System.out.println("Digite um valor para converter.");
-                    var valorOrignal = scanner.nextDouble();
-
-                    var valorConvertido = valorOrignal * dolarParaPeso;
-
-                    System.out.println("O valor de " + valorOrignal + " dólares é igual a " + valorConvertido + " pesos argentinos.");
-
+                    moedaOriginal = "USD";
+                    moedaAlvo = "ARS";
+                    taxaCambio = 4.0;
+                    conversao.converterValor(valorOriginal, moedaOriginal, moedaAlvo, taxaCambio);
                     break;
                 case 2:
+                    moedaOriginal = "ARS";
+                    moedaAlvo = "USD";
+                    taxaCambio = 4.0;
+                    conversao.converterValor(valorOriginal, moedaOriginal, moedaAlvo, taxaCambio);
                     break;
                 case 3:
+                    moedaOriginal = "";
+                    moedaAlvo = "";
+                    taxaCambio = 4.0;
+                    conversao.converterValor(valorOriginal, moedaOriginal, moedaAlvo, taxaCambio);
                     break;
                 case 4:
                     break;
