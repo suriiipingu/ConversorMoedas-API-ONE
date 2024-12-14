@@ -1,6 +1,7 @@
 public class ConversaoDeMoeda {
     private double valorOriginal;
     private double valorConvertido;
+    ListaHistorico historico = new ListaHistorico();
 
 
     public double getValorConvertido() {
@@ -11,11 +12,14 @@ public class ConversaoDeMoeda {
         return valorOriginal;
     }
 
-    public void converterValor(double valorOriginal,String moedaOriginal, String moedaAlvo, double taxaCambio){
+    public String converterValor(double valorOriginal,String moedaOriginal, String moedaAlvo, double taxaCambio){
         this.valorOriginal = valorOriginal;
-        valorConvertido = valorOriginal * taxaCambio;
+        this.valorConvertido = valorOriginal * taxaCambio;
 
-        System.out.println("O valor de " + valorOriginal + " [" + moedaOriginal + "]" + " é igual a " + valorConvertido + " [" + moedaAlvo + "]");
+        var dado = "O valor de " + valorOriginal + " [" + moedaOriginal + "]" + " é igual a " + valorConvertido + " [" + moedaAlvo + "]";
+        System.out.println(dado);
+        return dado;
+
     }
 
 

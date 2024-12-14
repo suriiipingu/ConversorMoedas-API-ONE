@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.util.List;
 import java.util.Scanner;
 
 public class Principal {
@@ -6,6 +7,7 @@ public class Principal {
         Scanner scanner = new Scanner(System.in);
         int opcao;
         ConversaoDeMoeda conversao = new ConversaoDeMoeda();
+        ListaHistorico historico = new ListaHistorico();
 
         while (true) {
             System.out.println("\n✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧✧\n");
@@ -22,7 +24,7 @@ public class Principal {
 
             opcao = scanner.nextInt();
 
-            if (opcao != 7) {
+            if (opcao != 7 && opcao !=8) {
 
                 System.out.println("Digite um valor para converter.");
                 var valorOriginal = scanner.nextDouble();
@@ -30,6 +32,7 @@ public class Principal {
                 String moedaOriginal;
                 String moedaAlvo;
                 double taxaConversao;
+                String dado;
 
                 switch (opcao) {
                     case 1:
@@ -37,7 +40,8 @@ public class Principal {
                         moedaAlvo = "ARS";
                         taxaConversao = PrincipalBusca.buscarTaxaConversao(moedaOriginal, moedaAlvo);
                         if (taxaConversao >= 0) {
-                            conversao.converterValor(valorOriginal, moedaOriginal, moedaAlvo, taxaConversao);
+                            dado = conversao.converterValor(valorOriginal, moedaOriginal, moedaAlvo, taxaConversao);
+                            historico.adicionarDado(dado);
                         } else {
                             System.out.println("Não foi possível encontrar a taxa de conversão.");
                         }
@@ -47,7 +51,8 @@ public class Principal {
                         moedaAlvo = "USD";
                         taxaConversao = PrincipalBusca.buscarTaxaConversao(moedaOriginal, moedaAlvo);
                         if (taxaConversao >= 0) {
-                            conversao.converterValor(valorOriginal, moedaOriginal, moedaAlvo, taxaConversao);
+                            dado = conversao.converterValor(valorOriginal, moedaOriginal, moedaAlvo, taxaConversao);
+                            historico.adicionarDado(dado);
                         } else {
                             System.out.println("Não foi possível encontrar a taxa de conversão.");
                         }
@@ -57,7 +62,8 @@ public class Principal {
                         moedaAlvo = "BRL";
                         taxaConversao = PrincipalBusca.buscarTaxaConversao(moedaOriginal, moedaAlvo);
                         if (taxaConversao >= 0) {
-                            conversao.converterValor(valorOriginal, moedaOriginal, moedaAlvo, taxaConversao);
+                            dado = conversao.converterValor(valorOriginal, moedaOriginal, moedaAlvo, taxaConversao);
+                            historico.adicionarDado(dado);
                         } else {
                             System.out.println("Não foi possível encontrar a taxa de conversão.");
                         }
@@ -67,7 +73,8 @@ public class Principal {
                         moedaAlvo = "USD";
                         taxaConversao = PrincipalBusca.buscarTaxaConversao(moedaOriginal, moedaAlvo);
                         if (taxaConversao >= 0) {
-                            conversao.converterValor(valorOriginal, moedaOriginal, moedaAlvo, taxaConversao);
+                            dado = conversao.converterValor(valorOriginal, moedaOriginal, moedaAlvo, taxaConversao);
+                            historico.adicionarDado(dado);
                         } else {
                             System.out.println("Não foi possível encontrar a taxa de conversão.");
                         }
@@ -77,7 +84,8 @@ public class Principal {
                         moedaAlvo = "COP";
                         taxaConversao = PrincipalBusca.buscarTaxaConversao(moedaOriginal, moedaAlvo);
                         if (taxaConversao >= 0) {
-                            conversao.converterValor(valorOriginal, moedaOriginal, moedaAlvo, taxaConversao);
+                            dado = conversao.converterValor(valorOriginal, moedaOriginal, moedaAlvo, taxaConversao);
+                            historico.adicionarDado(dado);
                         } else {
                             System.out.println("Não foi possível encontrar a taxa de conversão.");
                         }
@@ -87,22 +95,22 @@ public class Principal {
                         moedaAlvo = "USD";
                         taxaConversao = PrincipalBusca.buscarTaxaConversao(moedaOriginal, moedaAlvo);
                         if (taxaConversao >= 0) {
-                            conversao.converterValor(valorOriginal, moedaOriginal, moedaAlvo, taxaConversao);
+                            dado = conversao.converterValor(valorOriginal, moedaOriginal, moedaAlvo, taxaConversao);
+                            historico.adicionarDado(dado);
                         } else {
                             System.out.println("Não foi possível encontrar a taxa de conversão.");
                         }
-                        break;
-                    case 8:
                         break;
                     default:
                         System.out.println("Opção inválida. Tente novamente.");
                         break;
 
                 }
-            } else {
+            } else if (opcao == 7) {
                 scanner.close();
                 break;
-
+            } else if (opcao == 8){
+                historico.exibirLista();
             }
         }
     }
